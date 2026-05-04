@@ -1,0 +1,24 @@
+{
+  "random_seed": 42,
+  "cache_dir": "data/cache",
+  "base_items_path": "data/processed/base_items_2k.jsonl",
+  "instances_path": "data/processed/dangermap_instances_12k.jsonl",
+  "model_outputs_path": "outputs/qwen_7b_dangermap_12k_outputs.jsonl",
+  "scored_outputs_path": "outputs/qwen_7b_dangermap_12k_scored.jsonl",
+  "scored_csv_path": "outputs/qwen_7b_dangermap_12k_scored.csv",
+  "summary_csv_path": "outputs/qwen_7b_dangermap_12k_summary.csv",
+  "top_failures_path": "outputs/qwen_7b_top_silent_failures.jsonl",
+  "embedding_model": "BAAI/bge-base-en-v1.5",
+  "llm_model": "Qwen/Qwen2.5-7B-Instruct",
+  "per_domain": 500,
+  "max_docs_per_instance": 6,
+  "max_chars_per_doc": 1800,
+  "conditions": [
+    "clean",
+    "missing",
+    "partial",
+    "noisy",
+    "contradictory",
+    "stale"
+  ]
+}

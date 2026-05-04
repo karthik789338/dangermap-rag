@@ -1,0 +1,29 @@
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.cache/
+.DS_Store
+
+# Large data/cache files
+data/cache/
+data/raw/
+data/processed/*.jsonl
+
+# Large generated raw outputs
+outputs/*_outputs.jsonl
+outputs/*_scored*.jsonl
+outputs/*top_failures*.jsonl
+outputs/faithfulness/*.jsonl
+outputs/qualitative/*.jsonl
+
+# Logs
+logs/*.log
+
+# Model/cache artifacts
+models/
+*.safetensors
+*.bin
+*.pt
+*.pth
+wandb/
