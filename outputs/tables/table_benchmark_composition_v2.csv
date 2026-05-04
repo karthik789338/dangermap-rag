@@ -1,0 +1,8 @@
+domain,dataset,task_type,base_items,perturbed_instances,conditions_per_base_item
+finance,finqa,financial_numerical_qa,250,1500,6.0
+finance,tatqa,table_text_financial_qa,250,1500,6.0
+general,fever,claim_verification,250,1500,6.0
+general,hotpotqa,qa,250,1500,6.0
+legal,casehold,legal_multiple_choice,250,1500,6.0
+legal,cuad,contract_clause_qa,250,1500,6.0
+medical,pubmedqa,biomedical_qa,500,3000,6.0

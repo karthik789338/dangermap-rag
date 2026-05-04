@@ -1,0 +1,83 @@
+\section{Results}
+
+
+
+\subsection{Overall silent failure rate}
+
+Across 12,000 RAG instances spanning seven datasets, four domains, and six evidence conditions, Qwen2.5-7B-Instruct exhibited a substantial Silent Failure Zone. Under the v2 numeric-, label-, and citation-aware scorer, 22.88\% of outputs were classified as silent failures. A stricter citation-valid wrong-answer subset appeared in 15.43\% of all outputs. Average correctness was 58.26\%, while average confidence remained high at 76.36. These results indicate that many failures were not visibly uncertain responses; they were confident, cited, and non-abstaining.
+
+
+
+\subsection{Domain-level risk}
+
+Silent failure varied substantially by domain: legal (27.33\%), finance (26.30\%), medical (22.20\%), general (15.70\%). Legal and finance were the highest-risk domains, supporting the hypothesis that high-stakes information settings are especially vulnerable to silent RAG failures.
+
+
+
+\subsection{Condition-level risk}
+
+By evidence condition, silent failure rates were: missing (34.00\%), partial (31.80\%), clean (21.50\%), noisy (21.45\%), stale (16.35\%), contradictory (12.20\%). Missing and partial evidence produced the highest silent-failure rates. This revises the initial expectation that contradictory or stale evidence would dominate. The observed pattern suggests that incomplete evidence is especially dangerous because it leaves enough semantic signal for the model to answer confidently while lacking decisive support.
+
+At the same time, stale and contradictory evidence produced very high abstention-failure rates. This means those conditions often expose a refusal-control weakness even when they do not always produce the highest wrong-answer silent-failure rate.
+
+
+
+\subsection{Top risk zones}
+
+The highest-risk dataset-condition zone was legal/cuad/missing, with a silent-failure rate of 99.20\% and a 95\% bootstrap interval of [98.00\%, 100.00\%]. In this zone, average confidence was 99.60, citation appearance was 99.60\%, and citation support was 0.00\%. This is a clear example of the Silent Failure Zone: the model produces highly confident citation-looking answers even when gold support has been removed.
+
+
+
+\subsection{Metric comparison and Danger Score validation}
+
+The RAG Danger Score strongly outperformed individual component signals for ranking silent failures. Overall, Danger Score achieved ROC-AUC 0.984 and PR-AUC 0.940. Incorrectness alone achieved ROC-AUC 0.845 and PR-AUC 0.479, while confidence alone achieved ROC-AUC 0.623 and PR-AUC 0.281.
+
+Because Silent Failure is operationalized using correctness, confidence, citation behavior, and abstention, the high AUC of the composite score is expected. We therefore interpret this experiment as a ranking validation rather than an out-of-distribution prediction claim. A shuffle test reduced ROC-AUC to 0.497 and PR-AUC to 0.225, close to the silent-failure prevalence of 0.229. Repeated stratified hold-out evaluation remained stable, with ROC-AUC 0.984 $\pm$ 0.001 and PR-AUC 0.939 $\pm$ 0.003.
+
+
+
+\subsection{Cross-model generality}
+
+Silent Failure persisted across all three tested models. Qwen2.5-3B-Instruct had silent-failure rate 40.87\%, citation-valid wrong rate 26.58\%, average correctness 46.98\%, and average confidence 84.14; Mistral-7B-Instruct-v0.3 had silent-failure rate 23.50\%, citation-valid wrong rate 14.57\%, average correctness 43.29\%, and average confidence 61.53; Qwen2.5-7B-Instruct had silent-failure rate 22.88\%, citation-valid wrong rate 15.43\%, average correctness 58.26\%, and average confidence 76.36. This shows that the phenomenon is not specific to a single model family. The smaller Qwen2.5-3B model showed the highest silent-failure rate, suggesting that smaller instruction-tuned models may preserve citation-following and confidence behavior while having weaker evidence discrimination.
+
+
+
+\subsection{Citation faithfulness}
+
+An NLI-based citation-faithfulness proxy showed that many cited non-abstaining outputs were not entailed by their cited evidence. Overall cited-output unfaithfulness was: Mistral-7B-Instruct-v0.3: NLI-unfaithful 55.77\%, NLI-contradicted 11.04\%; Qwen2.5-3B-Instruct: NLI-unfaithful 61.44\%, NLI-contradicted 17.06\%; Qwen2.5-7B-Instruct: NLI-unfaithful 58.83\%, NLI-contradicted 11.93\%.
+
+Within the Silent Failure subset, citation unfaithfulness remained high: Mistral-7B-Instruct-v0.3: NLI-unfaithful among silent failures 50.89\%; Qwen2.5-3B-Instruct: NLI-unfaithful among silent failures 62.23\%; Qwen2.5-7B-Instruct: NLI-unfaithful among silent failures 54.92\%. These results indicate that many silent failures are not merely factually wrong; their citations often fail to entail the generated answer.
+
+
+
+\section{Analysis and Discussion}
+
+
+
+\subsection{The danger is not hallucination alone}
+
+Traditional hallucination framing is too broad for this phenomenon. Many dangerous RAG outputs are not visibly unsupported. They cite retrieved documents, express high confidence, and often follow the expected format of evidence-grounded answering. This makes the failure more difficult for users to detect.
+
+
+
+\subsection{Incomplete evidence is more dangerous than expected}
+
+The strongest condition-level finding is that missing and partial evidence produce the highest silent-failure rates. This suggests that RAG risk is not limited to explicit contradiction. Incomplete retrieval can be more dangerous because it provides enough surface relevance for the model to answer while withholding the decisive evidence needed for correctness.
+
+
+
+\subsection{Citation appearance and citation support diverge}
+
+The experiments repeatedly show that citation appearance can remain high even when citation support collapses. This motivates separating citation presence from citation faithfulness. A model can cite something and still fail because the cited document is semantically similar, stale, incomplete, contradictory, or mismatched to the query.
+
+
+
+\subsection{Abstention remains underdeveloped}
+
+Abstention failure is severe across flawed-evidence conditions. Models frequently continue answering when evidence is missing, partial, stale, or contradictory. This suggests that current instruction-tuned RAG behavior still favors answer completion over evidence-sensitive refusal.
+
+
+
+\subsection{Two citation failure modes}
+
+The NLI analysis suggests two distinct citation failure modes. In unfaithful citation failures, cited evidence does not entail the generated answer. In misleading-evidence-grounded failures, the cited evidence may entail the model answer, but the evidence itself is the wrong, stale, incomplete, or mismatched evidence. The second mode is especially important because the answer can be citation-faithful but still wrong relative to the task.

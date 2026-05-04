@@ -1,0 +1,114 @@
+\begin{table*}[t]
+\centering
+\caption{Benchmark composition by domain and dataset. Each base item is transformed into six evidence conditions: clean, missing, partial, noisy, contradictory, and stale.}
+\label{tab:benchmark-composition}
+\begin{tabular}{llrr}
+\toprule
+Domain & Dataset & Base items & Perturbed instances \\
+\midrule
+finance & finqa & 250 & 1500 \\
+finance & tatqa & 250 & 1500 \\
+general & fever & 250 & 1500 \\
+general & hotpotqa & 250 & 1500 \\
+legal & casehold & 250 & 1500 \\
+legal & cuad & 250 & 1500 \\
+medical & pubmedqa & 500 & 3000 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\caption{Silent failure rates by domain and evidence condition for Qwen2.5-7B-Instruct under the v2 scorer.}
+\label{tab:domain-condition-risk}
+\begin{tabular}{lrrrr}
+\toprule
+Group & $n$ & Silent failure & Citation-valid wrong & Danger score \\
+\midrule
+\multicolumn{5}{l}{\textit{By domain}} \\
+legal & 3000 & 27.33\% & 28.27\% & 0.659 \\
+finance & 3000 & 26.30\% & 13.67\% & 0.681 \\
+medical & 3000 & 22.20\% & 10.87\% & 0.637 \\
+general & 3000 & 15.70\% & 8.93\% & 0.588 \\
+\midrule
+\multicolumn{5}{l}{\textit{By condition}} \\
+missing & 2000 & 34.00\% & 41.55\% & 0.720 \\
+partial & 2000 & 31.80\% & 41.85\% & 0.772 \\
+clean & 2000 & 21.50\% & 2.30\% & 0.607 \\
+noisy & 2000 & 21.45\% & 2.25\% & 0.604 \\
+stale & 2000 & 16.35\% & 2.55\% & 0.585 \\
+contradictory & 2000 & 12.20\% & 2.10\% & 0.561 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\caption{Top risk zones ranked by silent failure rate. Confidence intervals are 95\% bootstrap intervals.}
+\label{tab:top-risk-zones}
+\begin{tabular}{lllrrrr}
+\toprule
+Domain & Dataset & Condition & $n$ & Silent failure & 95\% CI & Citation support \\
+\midrule
+legal & cuad & missing & 250 & 99.20\% & [98.00\%, 100.00\%] & 0.00\% \\
+legal & casehold & partial & 250 & 77.20\% & [71.60\%, 82.40\%] & 0.00\% \\
+legal & casehold & missing & 250 & 71.20\% & [66.00\%, 76.80\%] & 0.00\% \\
+legal & cuad & partial & 250 & 37.60\% & [32.00\%, 42.80\%] & 0.00\% \\
+finance & finqa & clean & 250 & 37.60\% & [31.60\%, 44.00\%] & 87.27\% \\
+finance & finqa & noisy & 250 & 36.00\% & [29.60\%, 42.00\%] & 86.27\% \\
+finance & tatqa & missing & 250 & 35.20\% & [29.20\%, 41.20\%] & 0.00\% \\
+medical & pubmedqa & clean & 500 & 34.20\% & [30.20\%, 38.20\%] & 97.60\% \\
+general & hotpotqa & missing & 250 & 33.60\% & [27.99\%, 39.20\%] & 0.00\% \\
+medical & pubmedqa & noisy & 500 & 33.40\% & [29.20\%, 37.60\%] & 97.70\% \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\caption{Metric comparison for predicting the operationalized Silent Failure label. Higher values indicate better ranking.}
+\label{tab:metric-comparison}
+\begin{tabular}{lrr}
+\toprule
+Predictor & ROC-AUC & PR-AUC \\
+\midrule
+Danger Score & 0.984 & 0.940 \\
+Incorrectness only (1 - correctness) & 0.845 & 0.479 \\
+Confidence only & 0.623 & 0.281 \\
+Citation misgrounding only (1 - citation support) & 0.594 & 0.277 \\
+Abstention failure indicator only & 0.570 & 0.258 \\
+Citation appearance only & 0.565 & 0.254 \\
+No-abstention indicator only & 0.565 & 0.254 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\caption{Cross-model comparison on the same 12,000-instance benchmark.}
+\label{tab:model-comparison}
+\begin{tabular}{lrrrrr}
+\toprule
+Model & Silent failure & Citation-valid wrong & Abstention failure & Correctness & Confidence \\
+\midrule
+Qwen2.5-3B-Instruct & 40.87\% & 26.58\% & 65.60\% & 46.98\% & 84.14 \\
+Mistral-7B-Instruct-v0.3 & 23.50\% & 14.57\% & 53.91\% & 43.29\% & 61.53 \\
+Qwen2.5-7B-Instruct & 22.88\% & 15.43\% & 57.93\% & 58.26\% & 76.36 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\caption{NLI-based citation-faithfulness proxy across models. Overall rows include cited, non-abstaining outputs. Silent-failure rows restrict to outputs classified as Silent Failures.}
+\label{tab:citation-faithfulness}
+\begin{tabular}{lrrrr}
+\toprule
+Model & Overall unfaithful & Overall contradicted & SF unfaithful & SF contradicted \\
+\midrule
+Mistral-7B-Instruct-v0.3 & 55.77\% & 11.04\% & 50.89\% & 13.33\% \\
+Qwen2.5-3B-Instruct & 61.44\% & 17.06\% & 62.23\% & 17.60\% \\
+Qwen2.5-7B-Instruct & 58.83\% & 11.93\% & 54.92\% & 12.64\% \\
+\bottomrule
+\end{tabular}
+\end{table*}

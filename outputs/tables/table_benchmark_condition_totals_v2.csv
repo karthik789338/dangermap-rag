@@ -1,0 +1,7 @@
+condition,perturbed_instances,base_items,expected_abstention_rate
+clean,2000,2000,0.0
+contradictory,2000,2000,1.0
+missing,2000,2000,1.0
+noisy,2000,2000,0.0
+partial,2000,2000,1.0
+stale,2000,2000,1.0
