@@ -1,0 +1,52 @@
+{
+  "version": "R2-sampled-NLI-diagnostic-v1",
+  "n_sample": 600,
+  "seed": 42,
+  "benchmark_sha256": "e36d0ca8a239b4efa5848d30f4a7a217ebf0c3309d508453f44f8a27fd03a0e3",
+  "r1_numeric_adjustments": 4424,
+  "model_id": "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli",
+  "model_revision": "6f5cf0a2b59cabb106aca4c287eed12e357e90eb",
+  "labels": {
+    "0": "entailment",
+    "1": "neutral",
+    "2": "contradiction"
+  },
+  "device": "cuda",
+  "nli_pair_count": 1000,
+  "max_cited_docs": 4,
+  "max_windows_per_citation": 2,
+  "window_token_budget": 320,
+  "hypothesis_token_budget": 168,
+  "pair_token_budget": 512,
+  "faithfulness_interpretation": "Question-conditioned entailment proxy, not calibrated support probability or human validation.",
+  "missing_evidence_coverage": "Omitted cited docs and passage windows are counted explicitly.",
+  "danger_interpretation": "Exploratory sample-only weight sensitivity, not independent Danger Score validation.",
+  "weight_profiles": {
+    "equal": [
+      0.25,
+      0.25,
+      0.25,
+      0.25
+    ],
+    "incorrectness_heavy": [
+      0.4,
+      0.2,
+      0.2,
+      0.2
+    ],
+    "confidence_heavy": [
+      0.2,
+      0.4,
+      0.2,
+      0.2
+    ],
+    "citation_heavy": [
+      0.2,
+      0.2,
+      0.3,
+      0.3
+    ]
+  },
+  "panel_sha256": "690af3ca2e392633c20380e179f7ad3798c53631244dfc3829a65ef9c9a507a6",
+  "r2_results_sha256": "e4a3fe7d8064e6cae5bc8f90fa5f352619b6334a6ccb35921e7f607c6b22fb82"
+}
