@@ -1,0 +1,63 @@
+{
+  "version": "DangerMap-RAG-v3-correctness-1.0",
+
+  "primary_output": "automated_correctness in [0,1]",
+
+  "policy": {
+    "abstention_forces_zero_correctness": false,
+    "unusable_answer": "missing",
+    "unmapped_classification_answer": "missing pending semantic/NLI fallback",
+    "human_validation_required": true
+  },
+
+  "dataset_rules": {
+    "hotpotqa": {
+      "method": "normalized token F1",
+      "score_range": "[0,1]"
+    },
+
+    "cuad": {
+      "method": "normalized token F1",
+      "score_range": "[0,1]"
+    },
+
+    "casehold": {
+      "method": "normalized token F1 after stripping leading option labels",
+      "score_range": "[0,1]"
+    },
+
+    "fever": {
+      "method": "deterministic SUPPORTS/REFUTES label mapping",
+      "unmapped": "missing"
+    },
+
+    "pubmedqa": {
+      "method": "deterministic yes/no/maybe label mapping",
+      "unmapped": "missing"
+    },
+
+    "finqa": {
+      "method": "numeric equivalence when gold is numeric; otherwise normalized token F1"
+    },
+
+    "tatqa": {
+      "method": "numeric equivalence when gold is numeric; otherwise normalized token F1"
+    }
+  },
+
+  "text_normalization": {
+    "lowercase": true,
+    "remove_punctuation": true,
+    "remove_articles": true,
+    "collapse_whitespace": true
+  },
+
+  "numeric_equivalence": {
+    "remove_currency_and_commas": true,
+    "percentage_scaling_equivalence": true,
+    "relative_tolerance": 0.0001,
+    "absolute_tolerance": 0.0001
+  },
+
+  "reference_incorrectness_threshold": 0.50
+}

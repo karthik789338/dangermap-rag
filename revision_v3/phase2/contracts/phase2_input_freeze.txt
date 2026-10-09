@@ -1,0 +1,8 @@
+DangerMap-RAG revision-v3 Phase-2 input freeze
+
+Git commit:
+29cd00c8be770e85d7e3b993396b3db6728a3acf
+
+Benchmark hashes:
+5b7122c5f16f9f4cd15802c34ca2e2727cace54c258ec65905d6e5fa4a853ce8  revision_v3/data/base_items_v3_2k.jsonl
+e36d0ca8a239b4efa5848d30f4a7a217ebf0c3309d508453f44f8a27fd03a0e3  revision_v3/data/dangermap_instances_v3_1_12k.jsonl

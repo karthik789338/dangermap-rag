@@ -1,0 +1,30 @@
+[
+  {
+    "repo_id": "Qwen/Qwen2.5-7B-Instruct",
+    "status": "FAILED",
+    "error": "LocalEntryNotFoundError(\"Got: HfHubHTTPError: Server error '504 Gateway Timeout' for url 'https://huggingface.co/api/models/Qwen/Qwen2.5-7B-Instruct/revision/main' (Amz CF ID: 5LmNBi6N-v4ofrL6CgJWuC5ZvhyhdtWF8oDzLfD1zKzcbBO_P2vp7w==)\\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/504\\nAn error happened while trying to locate the files on the Hub and we cannot find the appropriate snapshot folder for the specified revision on the local disk. Please check your internet connection and try again.\")"
+  },
+  {
+    "repo_id": "Qwen/Qwen2.5-3B-Instruct",
+    "status": "FAILED",
+    "error": "ReadTimeout('The read operation timed out')"
+  },
+  {
+    "repo_id": "mistralai/Mistral-7B-Instruct-v0.3",
+    "status": "SUCCESS",
+    "local_path": "/home/ubuntu/.cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.3/snapshots/c170c708c41dac9275d15a8fff4eca08d52bab71",
+    "elapsed_seconds": 263.88504552841187
+  },
+  {
+    "repo_id": "BAAI/bge-base-en-v1.5",
+    "status": "SUCCESS",
+    "local_path": "/home/ubuntu/.cache/huggingface/hub/models--BAAI--bge-base-en-v1.5/snapshots/a5beb1e3e68b9ab74eb54cfd186867f64f240e1a",
+    "elapsed_seconds": 10.082538366317749
+  },
+  {
+    "repo_id": "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli",
+    "status": "SUCCESS",
+    "local_path": "/home/ubuntu/.cache/huggingface/hub/models--MoritzLaurer--DeBERTa-v3-base-mnli-fever-anli/snapshots/6f5cf0a2b59cabb106aca4c287eed12e357e90eb",
+    "elapsed_seconds": 5.866039752960205
+  }
+]

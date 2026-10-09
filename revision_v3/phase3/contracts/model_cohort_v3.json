@@ -1,0 +1,41 @@
+{
+  "version": "DangerMap-RAG-v3-model-cohort-1.0",
+  "models": [
+    {
+      "short_name": "qwen25_7b",
+      "model_id": "Qwen/Qwen2.5-7B-Instruct",
+      "family": "Qwen",
+      "submitted_model": true
+    },
+    {
+      "short_name": "qwen25_3b",
+      "model_id": "Qwen/Qwen2.5-3B-Instruct",
+      "family": "Qwen",
+      "submitted_model": true
+    },
+    {
+      "short_name": "mistral_7b",
+      "model_id": "mistralai/Mistral-7B-Instruct-v0.3",
+      "family": "Mistral",
+      "submitted_model": true
+    },
+    {
+      "short_name": "phi35_mini",
+      "model_id": "microsoft/Phi-3.5-mini-instruct",
+      "family": "Phi",
+      "submitted_model": false
+    },
+    {
+      "short_name": "granite33_8b",
+      "model_id": "ibm-granite/granite-3.3-8b-instruct",
+      "family": "Granite",
+      "submitted_model": false
+    },
+    {
+      "short_name": "falcon3_7b",
+      "model_id": "tiiuae/Falcon3-7B-Instruct",
+      "family": "Falcon",
+      "submitted_model": false
+    }
+  ]
+}

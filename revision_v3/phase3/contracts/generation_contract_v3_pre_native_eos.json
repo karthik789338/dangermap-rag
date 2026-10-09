@@ -1,0 +1,40 @@
+{
+  "version": "DangerMap-RAG-v3-generation-1.0",
+
+  "input_benchmark": "revision_v3/data/dangermap_instances_v3_1_12k.jsonl",
+
+  "input_sha256": "e36d0ca8a239b4efa5848d30f4a7a217ebf0c3309d508453f44f8a27fd03a0e3",
+
+  "decoding": {
+    "do_sample": false,
+    "max_new_tokens": 450,
+    "temperature": null,
+    "top_p": null,
+    "seed": 42
+  },
+
+  "context_policy": {
+    "generation_time_document_truncation": false,
+    "silent_tokenizer_truncation": false,
+    "maximum_allowed_input_tokens": 12000,
+    "action_if_exceeded": "fail_before_generation"
+  },
+
+  "output_schema": {
+    "answer": "string",
+    "abstain": "boolean",
+    "expressed_confidence": "number from 0 to 100",
+    "citations": "list of provided doc_id strings",
+    "explanation": "brief evidence-grounded reason"
+  },
+
+  "reproducibility": {
+    "pin_model_revision": true,
+    "pin_tokenizer_revision": true,
+    "record_prompt_sha256": true,
+    "record_benchmark_sha256": true,
+    "record_library_versions": true,
+    "record_gpu_metadata": true,
+    "resume_supported": true
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "pilot_size": 12,
+  "selection": "deterministic SHA256-ranked selection within frozen dataset-condition targets",
+  "targets": [
+    {
+      "dataset": "hotpotqa",
+      "condition": "clean"
+    },
+    {
+      "dataset": "hotpotqa",
+      "condition": "missing"
+    },
+    {
+      "dataset": "fever",
+      "condition": "partial"
+    },
+    {
+      "dataset": "fever",
+      "condition": "contradictory"
+    },
+    {
+      "dataset": "pubmedqa",
+      "condition": "noisy"
+    },
+    {
+      "dataset": "pubmedqa",
+      "condition": "stale"
+    },
+    {
+      "dataset": "cuad",
+      "condition": "clean"
+    },
+    {
+      "dataset": "cuad",
+      "condition": "partial"
+    },
+    {
+      "dataset": "casehold",
+      "condition": "contradictory"
+    },
+    {
+      "dataset": "casehold",
+      "condition": "stale"
+    },
+    {
+      "dataset": "finqa",
+      "condition": "noisy"
+    },
+    {
+      "dataset": "tatqa",
+      "condition": "missing"
+    }
+  ],
+  "instance_ids": [
+    "hotpotqa_5961__clean",
+    "hotpotqa_2400__missing",
+    "fever_81069__partial",
+    "fever_63746__contradictory",
+    "pubmedqa_976__noisy",
+    "pubmedqa_931__stale",
+    "cuad_3451__clean",
+    "cuad_5080__partial",
+    "casehold_2209__contradictory",
+    "casehold_411__stale",
+    "finqa_726__noisy",
+    "tatqa_64_4__missing"
+  ],
+  "condition_counts": {
+    "clean": 2,
+    "contradictory": 2,
+    "missing": 2,
+    "noisy": 2,
+    "partial": 2,
+    "stale": 2
+  }
+}

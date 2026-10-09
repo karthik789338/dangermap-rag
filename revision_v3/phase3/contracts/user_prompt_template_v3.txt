@@ -1,0 +1,7 @@
+Question:
+{question}
+
+Retrieved evidence:
+{evidence}
+
+Return the required JSON object using only the evidence above.

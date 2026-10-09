@@ -1,0 +1,43 @@
+{
+  "benchmark_version": "revision_v3",
+  "random_seed": 42,
+  "sampling_strategy": "seeded_without_replacement_from_full_eligible_split",
+  "total_base_items": 2000,
+  "dataset_counts": {
+    "casehold": 250,
+    "cuad": 250,
+    "fever": 250,
+    "finqa": 250,
+    "hotpotqa": 250,
+    "pubmedqa": 500,
+    "tatqa": 250
+  },
+  "eligible_pool_sizes": {
+    "hotpotqa": 7405,
+    "fever": 13332,
+    "pubmedqa": 1000,
+    "cuad": 10010,
+    "casehold": 3900,
+    "finqa": 883,
+    "tatqa": 1644
+  },
+  "source_splits": {
+    "hotpotqa": "validation",
+    "fever": "shared_task_dev",
+    "pubmedqa": "train (pqa_labeled)",
+    "cuad": "train",
+    "casehold": "validation",
+    "finqa": "dev",
+    "tatqa": "validation"
+  },
+  "construction_fixes": [
+    "seeded sampling from the complete eligible source split",
+    "CaseHOLD answer removed from retrieved evidence",
+    "CaseHOLD legal context removed from query; answer choices retained",
+    "CaseHOLD incorrect choices removed from retrieval distractor pool",
+    "FinQA gold-index annotation artifact removed from retrieved evidence",
+    "TAT-QA derivation annotation removed from retrieved evidence"
+  ],
+  "output": "revision_v3/data/base_items_v3_2k.jsonl",
+  "sha256": "e202436489c772dcdcc7055c53c3b68196361836eb4880b4933d624a9e20105f"
+}

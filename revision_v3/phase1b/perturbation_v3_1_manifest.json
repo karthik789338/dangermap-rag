@@ -1,0 +1,82 @@
+{
+  "benchmark_version": "revision_v3",
+  "random_seed": 42,
+  "base_items": "revision_v3/data/base_items_v3_2k.jsonl",
+  "base_sha256": "5b7122c5f16f9f4cd15802c34ca2e2727cace54c258ec65905d6e5fa4a853ce8",
+  "instances": "revision_v3/data/dangermap_instances_v3_1_12k.jsonl",
+  "instances_sha256": "e36d0ca8a239b4efa5848d30f4a7a217ebf0c3309d508453f44f8a27fd03a0e3",
+  "total_instances": 12000,
+  "conditions": [
+    "clean",
+    "missing",
+    "partial",
+    "noisy",
+    "contradictory",
+    "stale"
+  ],
+  "embedding_model": "BAAI/bge-base-en-v1.5",
+  "embedding_revision": "a5beb1e3e68b9ab74eb54cfd186867f64f240e1a",
+  "top_k_noise": 8,
+  "max_docs": 12,
+  "max_chars_per_doc": 3000,
+  "condition_definitions": {
+    "clean": "Gold supporting evidence only.",
+    "missing": "All gold evidence removed; semantic non-gold retrievals only.",
+    "partial": "Original support reduced by decisive-region removal.",
+    "noisy": "Gold support preserved and mixed with semantic distractors.",
+    "contradictory": "Gold support plus one neutral record asserting an alternative answer.",
+    "stale": "Current gold support removed; an archived dated snapshot asserts an alternative answer."
+  },
+  "quality": {
+    "total_base_items": 2000,
+    "total_instances": 12000,
+    "condition_counts": {
+      "clean": 2000,
+      "contradictory": 2000,
+      "missing": 2000,
+      "noisy": 2000,
+      "partial": 2000,
+      "stale": 2000
+    },
+    "doc_counts": {
+      "clean": {
+        "min": 1,
+        "mean": 1.708,
+        "max": 9
+      },
+      "contradictory": {
+        "min": 4,
+        "mean": 4.708,
+        "max": 12
+      },
+      "missing": {
+        "min": 8,
+        "mean": 8.0,
+        "max": 8
+      },
+      "noisy": {
+        "min": 9,
+        "mean": 9.658,
+        "max": 12
+      },
+      "partial": {
+        "min": 1,
+        "mean": 1.244,
+        "max": 4
+      },
+      "stale": {
+        "min": 9,
+        "mean": 9.0,
+        "max": 9
+      }
+    },
+    "partial_retained_ratio": {
+      "min": 0.0021551724137931034,
+      "mean": 0.4185565437125614,
+      "median": 0.4300515709966961,
+      "max": 0.797752808988764
+    },
+    "synthetic_cue_hits": 0,
+    "error_count": 0
+  }
+}

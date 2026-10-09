@@ -1,0 +1,78 @@
+{
+  "version": "DangerMap-RAG-v3-sensitivity-1.0",
+
+  "primary_reference_thresholds": {
+    "tau_A": 0.50,
+    "tau_C": 0.70,
+    "tau_V": 0.50
+  },
+
+  "primary_sf_threshold_grid": {
+    "tau_A": [0.40, 0.50, 0.60],
+    "tau_C": [0.60, 0.70, 0.80],
+    "tau_V": [0.40, 0.50, 0.60],
+    "total_settings": 27
+  },
+
+  "citation_unfaithful_sf": {
+    "primary_sf_thresholds_fixed_at_reference": true,
+    "tau_F_grid": [0.40, 0.50, 0.60]
+  },
+
+  "danger_score_weight_regimes": {
+    "equal": {
+      "incorrectness": 0.25,
+      "expressed_confidence": 0.25,
+      "citation_appearance": 0.25,
+      "citation_misgrounding": 0.25
+    },
+
+    "incorrectness_heavy": {
+      "incorrectness": 0.40,
+      "expressed_confidence": 0.20,
+      "citation_appearance": 0.20,
+      "citation_misgrounding": 0.20
+    },
+
+    "confidence_heavy": {
+      "incorrectness": 0.20,
+      "expressed_confidence": 0.40,
+      "citation_appearance": 0.20,
+      "citation_misgrounding": 0.20
+    },
+
+    "citation_heavy": {
+      "incorrectness": 0.20,
+      "expressed_confidence": 0.20,
+      "citation_appearance": 0.30,
+      "citation_misgrounding": 0.30
+    }
+  },
+
+  "threshold_stability_metrics": [
+    "silent_failure_rate",
+    "absolute_rate_change_from_reference",
+    "jaccard_vs_reference_sf_set",
+    "cohen_kappa_vs_reference"
+  ],
+
+  "weight_stability_metrics": [
+    "spearman_rank_correlation_vs_equal",
+    "top_decile_jaccard_vs_equal",
+    "mean_absolute_score_change"
+  ],
+
+  "statistical_dependence": {
+    "cluster_unit": "base_id",
+    "cluster_bootstrap_iterations": 1000,
+    "cluster_bootstrap_seed": 1701,
+    "reason": "All six evidence-condition variants derived from one base item are treated as a repeated cluster."
+  },
+
+  "interpretation_policy": {
+    "threshold_grid": "Sensitivity analysis only. Reference thresholds remain fixed regardless of observed results.",
+    "weight_regimes": "Robustness analysis only. Equal weights remain the primary descriptive score.",
+    "sf_roc_pr": "Internal structural consistency only.",
+    "human_risk_validation": "Independent validation target for Danger Score."
+  }
+}

@@ -1,0 +1,14 @@
+DangerMap-RAG Phase 3C FINAL GENERATION FREEZE
+
+Frozen UTC: 2026-09-27T07:57:14Z
+
+Git:
+29cd00c8be770e85d7e3b993396b3db6728a3acf
+
+Frozen artifacts:
+e36d0ca8a239b4efa5848d30f4a7a217ebf0c3309d508453f44f8a27fd03a0e3  revision_v3/data/dangermap_instances_v3_1_12k.jsonl
+abfe3a8921507e600672bccaca747763fa7c5976b1a7514e76b613dad137272b  revision_v3/phase3/contracts/system_prompt_v3.txt
+8a0810c409c6d099f5ead213aa66d1964251c494459f0affb086aa0b20c3fc61  revision_v3/phase3/contracts/user_prompt_template_v3.txt
+3384e03a115b3d261ba19c4a35eb664a0af6ed8bf0139e9f24627d0f1c3027b4  revision_v3/phase3/contracts/generation_contract_v3.json
+fd0eb2a4c66a1449055d22da9179640db83a20b1b1244dc900204d0b3d1f02bd  revision_v3/phase3/contracts/output_parsing_contract_v3.json
+b3c350bebacd59587e6db58424d25a5771e9fad6909403473c9b02d88f4bbfe6  revision_v3/phase3/contracts/model_revisions_v3.json

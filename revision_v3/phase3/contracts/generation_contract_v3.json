@@ -1,0 +1,55 @@
+{
+  "version": "DangerMap-RAG-v3-generation-1.2",
+  "input_benchmark": "revision_v3/data/dangermap_instances_v3_1_12k.jsonl",
+  "input_sha256": "e36d0ca8a239b4efa5848d30f4a7a217ebf0c3309d508453f44f8a27fd03a0e3",
+  "decoding": {
+    "do_sample": false,
+    "max_new_tokens": 1024,
+    "temperature": null,
+    "top_p": null,
+    "seed": 42,
+    "stopping_policy": "Use the model repository's pinned GenerationConfig eos_token_id exactly. Do not replace a list-valued native EOS configuration with tokenizer.eos_token_id.",
+    "pad_token_policy": "Use native GenerationConfig pad_token_id when defined; otherwise tokenizer pad_token_id; otherwise fall back to the first native EOS ID. Padding does not affect semantic generation because evaluation uses batch size 1."
+  },
+  "context_policy": {
+    "generation_time_document_truncation": false,
+    "silent_tokenizer_truncation": false,
+    "maximum_allowed_input_tokens": 12000,
+    "action_if_exceeded": "fail_before_generation"
+  },
+  "output_schema": {
+    "answer": "string",
+    "abstain": "boolean",
+    "expressed_confidence": "number from 0 to 100",
+    "citations": "list of provided doc_id strings",
+    "explanation": "brief evidence-grounded reason"
+  },
+  "reproducibility": {
+    "pin_model_revision": true,
+    "pin_tokenizer_revision": true,
+    "record_prompt_sha256": true,
+    "record_benchmark_sha256": true,
+    "record_library_versions": true,
+    "record_gpu_metadata": true,
+    "resume_supported": true
+  },
+  "pilot_amendment": {
+    "reason": "The frozen pilot revealed that Phi-3.5 defines multiple native EOS IDs but the initial runner forced only tokenizer.eos_token_id, causing repeated answer blocks.",
+    "scope": "Model-independent generation-harness correction made before full benchmark generation.",
+    "prompt_changed": false,
+    "models_changed": false,
+    "sampling_changed": false,
+    "parser_policy_changed": false
+  },
+  "pilot_amendment_2": {
+    "reason": "The native-EOS pilot showed one Phi-3.5 response reaching the 450-token ceiling and being truncated before the JSON object completed.",
+    "old_max_new_tokens": 450,
+    "new_max_new_tokens": 1024,
+    "scope": "Applied identically to all models before full benchmark generation.",
+    "prompt_changed": false,
+    "models_changed": false,
+    "sampling_changed": false,
+    "temperature_changed": false,
+    "parser_policy_changed": false
+  }
+}

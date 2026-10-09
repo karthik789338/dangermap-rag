@@ -1,0 +1,18 @@
+{
+  "python": "3.12.3",
+  "platform": "Linux-7.0.0-1012-aws-x86_64-with-glibc2.39",
+  "torch": "2.4.1+cu121",
+  "transformers": "5.7.0",
+  "huggingface_hub": "1.13.0",
+  "sentence_transformers": "5.4.1",
+  "cuda_available": true,
+  "cuda_runtime": "12.1",
+  "gpu_count": 1,
+  "gpus": [
+    {
+      "index": 0,
+      "name": "NVIDIA L4",
+      "total_memory_gib": 22.036
+    }
+  ]
+}

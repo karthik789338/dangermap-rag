@@ -1,0 +1,44 @@
+{
+  "version": "DangerMap-RAG-v3-semantic-correctness-fallback-1.0",
+
+  "model": {
+    "model_id": "MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli",
+    "revision": "6f5cf0a2b59cabb106aca4c287eed12e357e90eb"
+  },
+
+  "eligibility": {
+    "automated_correctness_is_missing": true,
+    "answer_usable": true,
+    "datasets": [
+      "fever",
+      "pubmedqa"
+    ]
+  },
+
+  "fever": {
+    "premise": "model answer_text",
+    "hypothesis": "original FEVER claim extracted from the benchmark question",
+    "mapping": {
+      "entailment": "SUPPORTS",
+      "contradiction": "REFUTES",
+      "neutral": "leave missing"
+    }
+  },
+
+  "pubmedqa": {
+    "premise": "benchmark question plus model answer_text",
+    "candidate_hypotheses": {
+      "yes": "The response gives a yes answer to the question.",
+      "no": "The response gives a no answer to the question.",
+      "maybe": "The response gives an uncertain or maybe answer to the question."
+    },
+    "mapping_rule": "A candidate is eligible only when entailment is that candidate pair's native NLI argmax. If multiple candidates qualify, choose the one with highest entailment probability. If none qualify, leave correctness missing."
+  },
+
+  "policy": {
+    "no_weight_tuning": true,
+    "no_manual_output_specific_rules": true,
+    "neutral_or_unresolved_remains_missing": true,
+    "human_validation_required": true
+  }
+}

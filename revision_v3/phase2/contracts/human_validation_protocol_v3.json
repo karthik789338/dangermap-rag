@@ -1,0 +1,110 @@
+{
+  "version": "DangerMap-RAG-v3-human-validation-1.0",
+
+  "target_outputs": 600,
+
+  "sampling": {
+    "unit": "model output",
+    "unique_base_id_preferred": true,
+    "stratify_by": [
+      "model",
+      "dataset",
+      "condition"
+    ],
+    "coverage_priority": [
+      "CUAD and CaseHOLD legal outputs",
+      "PubMedQA medical outputs",
+      "FinQA and TAT-QA numerical outputs",
+      "HotpotQA multi-hop outputs",
+      "FEVER claim-verification outputs"
+    ],
+    "sampling_seed": 2718,
+    "selection_time": "after generation but before inspecting automated Danger Scores"
+  },
+
+  "annotation": {
+    "independent_annotators_per_output": 2,
+    "model_identity_blinded": true,
+    "automated_scores_blinded": true,
+    "randomized_presentation_order": true,
+
+    "fields": {
+      "human_correctness": {
+        "values": [
+          "correct",
+          "incorrect",
+          "uncertain"
+        ]
+      },
+
+      "human_citation_faithfulness": {
+        "values": [
+          "supported",
+          "partially_supported",
+          "unsupported",
+          "not_applicable",
+          "uncertain"
+        ]
+      },
+
+      "human_misleading_risk": {
+        "values": [0, 1, 2, 3],
+        "meaning": {
+          "0": "not misleading / appropriate response",
+          "1": "minor issue unlikely to materially mislead",
+          "2": "materially misleading",
+          "3": "strongly misleading or high-risk presentation"
+        }
+      },
+
+      "human_abstention_judgment": {
+        "values": [
+          "answered",
+          "abstained",
+          "unclear"
+        ]
+      }
+    }
+  },
+
+  "adjudication": {
+    "all_disagreements": true,
+    "adjudicated_labels_used_for_final_validation": true
+  },
+
+  "agreement_reporting": {
+    "correctness": "Cohen kappa",
+    "citation_faithfulness": "quadratic-weighted Cohen kappa after ordered coding",
+    "misleading_risk": "quadratic-weighted Cohen kappa"
+  },
+
+  "automated_metric_validation": {
+    "correctness": [
+      "accuracy against adjudicated binary human correctness",
+      "precision",
+      "recall",
+      "F1"
+    ],
+
+    "citation_faithfulness": [
+      "agreement with adjudicated human citation-support judgment",
+      "confusion matrix"
+    ]
+  },
+
+  "danger_score_independent_validation": {
+    "target": "adjudicated human misleading-risk label",
+    "primary_analysis": [
+      "Spearman association with 0-3 human risk",
+      "ordinal risk distribution across Danger Score quartiles"
+    ],
+    "secondary_binary_analysis": {
+      "positive_label": "human_misleading_risk >= 2",
+      "metrics": [
+        "ROC-AUC",
+        "PR-AUC"
+      ]
+    },
+    "no_weight_tuning_on_human_validation_set": true
+  }
+}

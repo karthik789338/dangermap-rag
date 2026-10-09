@@ -1,0 +1,9 @@
+DangerMap-RAG Phase 2 frozen analysis design
+
+Frozen UTC: 2026-09-27T06:47:16Z
+
+df918b2ceb10d9e01bd7733e34270cd5a3216160c928187868aac75a381bd2cd  revision_v3/phase2/contracts/scoring_contract_v3.json
+21787ec066dba2f98e61a07fde507ec516c8b46b6da66ff447492a39e756d0a3  revision_v3/phase2/contracts/sensitivity_design_v3.json
+9578259809ddb9c4fb6c4f61ac44b835e444b9993b4a5ddb36d0889b9b575c31  revision_v3/phase2/contracts/human_validation_protocol_v3.json
+51c98a8ac1b3c761247a2319d40476d3282ca436c2e9e8846e32b1212771080c  revision_v3/phase2/scripts/scoring_v3.py
+32549bc8ac93e55c2c74d7670fa8d2f275edcf383b4731c80ee312f8335261c7  revision_v3/phase2/scripts/sensitivity_v3.py

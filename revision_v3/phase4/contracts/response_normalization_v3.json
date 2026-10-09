@@ -1,0 +1,52 @@
+{
+  "version": "DangerMap-RAG-v3-response-normalization-1.0",
+
+  "primary_generation_corpus": "original 72,000 outputs generated with the frozen 1024-token ceiling",
+
+  "cap_extensions": {
+    "status": "diagnostic_only",
+    "used_to_replace_primary_outputs": false,
+    "reason": "All 62 deterministic extensions reproduced the original 1024-token prefix; 61 reached 2048 tokens and none yielded a canonical-valid response."
+  },
+
+  "response_recovery": {
+    "source": "first complete JSON object from frozen canonical parser",
+    "unrecoverable_outputs": "retained as missing structured response, never silently dropped"
+  },
+
+  "answer_normalization": {
+    "string": "retain",
+    "integer": "convert to string for semantic correctness scoring",
+    "float": "convert to string for semantic correctness scoring",
+    "boolean": "convert to lowercase true/false string",
+    "null": "unavailable",
+    "list": "unavailable",
+    "object": "unavailable"
+  },
+
+  "abstention_normalization": {
+    "accepted_type": "boolean only",
+    "other_types": "unavailable"
+  },
+
+  "expressed_confidence_normalization": {
+    "accepted_type": "numeric non-boolean",
+    "accepted_range": "0 to 100 inclusive",
+    "normalized_range": "0 to 1",
+    "other_values": "unavailable"
+  },
+
+  "citation_normalization": {
+    "source": "already-normalized canonical citation list",
+    "invalid_doc_ids": "retain as genuine model behavior",
+    "fuzzy_matching": false,
+    "position_based_repair": false
+  },
+
+  "analysis_policy": {
+    "do_not_drop_entire_output_for_schema_error": true,
+    "metric_specific_missingness": true,
+    "report_missingness_by_model": true,
+    "report_format_compliance_separately_from_semantic_quality": true
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "summary": {
+    "total_base_items": 2000,
+    "total_instances": 12000,
+    "condition_counts": {
+      "clean": 2000,
+      "contradictory": 2000,
+      "missing": 2000,
+      "noisy": 2000,
+      "partial": 2000,
+      "stale": 2000
+    },
+    "doc_counts": {
+      "clean": {
+        "min": 1,
+        "mean": 1.708,
+        "max": 9
+      },
+      "contradictory": {
+        "min": 4,
+        "mean": 4.708,
+        "max": 12
+      },
+      "missing": {
+        "min": 8,
+        "mean": 8.0,
+        "max": 8
+      },
+      "noisy": {
+        "min": 9,
+        "mean": 9.658,
+        "max": 12
+      },
+      "partial": {
+        "min": 1,
+        "mean": 1.244,
+        "max": 4
+      },
+      "stale": {
+        "min": 9,
+        "mean": 9.0,
+        "max": 9
+      }
+    },
+    "partial_retained_ratio": {
+      "min": 0.0021551724137931034,
+      "mean": 0.4185565437125614,
+      "median": 0.4300515709966961,
+      "max": 0.797752808988764
+    },
+    "synthetic_cue_hits": 0,
+    "error_count": 0
+  },
+  "errors": []
+}

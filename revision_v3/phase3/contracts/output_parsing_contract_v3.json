@@ -1,0 +1,34 @@
+{
+  "version": "DangerMap-RAG-v3-output-parsing-1.0",
+
+  "strict_compliance": {
+    "definition": "The complete raw generation must parse as one JSON object and satisfy the frozen output schema with exact supplied citation IDs.",
+    "reported_separately": true
+  },
+
+  "canonical_scientific_parse": {
+    "json_policy": "Use the first complete syntactically valid JSON object occurring in the raw generation.",
+    "reason": "The first completed object is the model's first complete answer; later repetitions, markdown fences, or commentary are retained in raw output but are not substituted for the first answer.",
+    "citation_normalization": [
+      "Trim surrounding whitespace.",
+      "Accept an exact supplied doc_id unchanged.",
+      "If and only if a citation has a leading literal 'doc_id:' prefix, strip that prefix and accept the remainder only when it exactly equals a supplied doc_id."
+    ],
+    "forbidden_normalizations": [
+      "Do not map Document N to a doc_id.",
+      "Do not map doc_id_N placeholders to evidence positions.",
+      "Do not fuzzy-match citation IDs.",
+      "Do not replace nonexistent IDs with nearby valid IDs.",
+      "Do not choose a later JSON object because its answer is preferable."
+    ]
+  },
+
+  "failure_reporting": {
+    "strict_json_compliance_rate": true,
+    "canonical_parse_rate": true,
+    "canonical_schema_validity_rate": true,
+    "invalid_citation_rate": true,
+    "multiple_json_object_rate": true,
+    "normalization_count": true
+  }
+}
