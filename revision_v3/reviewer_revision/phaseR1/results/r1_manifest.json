@@ -1,0 +1,34 @@
+{
+  "benchmark_sha256": "e36d0ca8a239b4efa5848d30f4a7a217ebf0c3309d508453f44f8a27fd03a0e3",
+  "models_file_sha256": {
+    "qwen25_3b": "6f4116ce3c9ee64c568ed95f46829523c2d6762bef0ec2022a52c28d58c534d7",
+    "qwen25_7b": "70cf1a3bad7ad71874338f37940f2c945bd225a45fb526fc2547b4ff6e5f4505",
+    "mistral_7b": "5c61880a1631a18b9c40d9d59b0a543bbc81605c53356cb2599e2f3b4d3c8f8b",
+    "phi35_mini": "e76cebce6a9080be67d84f3647bc03b3fc600d6f0160f4c7016bde1c929a3272",
+    "granite33_8b": "709e72664bb3dc65bdbf6d6cf5aba74e3158ba2c95323483a94529d726f92ce6",
+    "falcon3_7b": "9a22bc8267579872ca553909f3c93abd75dfdaff9409b5edb03acbfc1b293323"
+  },
+  "numeric_ambiguities_reclassified": 4424,
+  "numeric_adjustments_by_model": {
+    "qwen25_3b": 312,
+    "qwen25_7b": 234,
+    "mistral_7b": 684,
+    "phi35_mini": 1059,
+    "granite33_8b": 1414,
+    "falcon3_7b": 721
+  },
+  "numeric_adjustment_methods": {
+    "ambiguous_numeric_no_scalar": 4117,
+    "equation_rhs": 307
+  },
+  "n_models": 6,
+  "n_outputs": 72000,
+  "n_bases": 2000,
+  "n_conditions": 6,
+  "threshold_configurations": 27,
+  "bootstrap_replicates": 1000,
+  "seed": 42,
+  "citation_V_definition": "valid identifier citations / all supplied citations; empty list 0; unparseable list missing",
+  "missing_policy": "three-valued SF; report observed rate and full-denominator upper/lower bounds",
+  "citation_F_status": "not computed in R1; Danger Score and CUSF reserved for R2"
+}
